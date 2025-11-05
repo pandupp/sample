@@ -16,8 +16,7 @@ body {
     
     background-image: url('../images/background.jpg');
     background-size: cover;
-    background-position: center;
-    background-attachment: scroll; 
+    background-position: center; 
     overflow-x: hidden;
 }
 
