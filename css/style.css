@@ -1,0 +1,191 @@
+/* =================================
+SKRIP CSS - FOKUS FRAME 1 (REVISI 3)
+Warna Baru & Ukuran Gambar
+================================= */
+
+/* * 1. CSS Reset & Font Dasar
+ * ----------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    
+    background-image: url('../images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+    overflow-x: hidden;
+}
+
+/* * 2. Gaya untuk FRAME 1 (COVER)
+ * ----------------------------- */
+#cover {
+    min-height: 100vh;
+    width: 100%;
+    
+    /* KUNCI PERBAIKAN LAYOUT:
+     * Menggunakan 'space-between' untuk mendorong
+     * elemen pertama (teks) ke atas dan
+     * elemen terakhir (tombol) ke bawah.
+     */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    align-items: center;     
+    
+    padding: 40px 20px 20px 20px; /* Atas 40, Bawah 20 */
+    
+    color: #444; 
+    text-align: center;
+    position: relative;
+}
+
+/* * 3. Gaya untuk Teks Awal */
+.cover-text-group {
+    width: 100%;
+    /* 'margin-bottom' tidak perlu, 'space-between' akan mengaturnya */
+}
+
+.cover-welcome-sub {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    /* PERUBAHAN WARNA: Sesuai permintaan Anda */
+    color: #e2835f; 
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+}
+
+.cover-welcome-main {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    /* PERUBAHAN WARNA: Sesuai permintaan Anda */
+    color: #e2835f;
+    letter-spacing: 1px;
+}
+
+/* * 4. Gaya untuk Group Gambar (Hanya bungaframe1 & hero) */
+.cover-image-group {
+    position: relative;
+    width: 100%;
+
+    /* PERUBAHAN UKURAN: Gambar diperbesar */
+    max-width: 450px; /* Lebih besar dari 350px */
+    height: 400px; /* Lebih tinggi dari 300px */
+}
+
+.cover-image-flowers {
+    /* (Bunga di DEPAN) */
+    position: absolute;
+    width: 105%;
+    height: auto;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2; /* z-index TINGGI (di depan) */
+}
+
+.cover-image-hero {
+    /* (Pasangan di BELAKANG) */
+    position: absolute;
+    
+    /* PERUBAHAN UKURAN: Hero juga diperbesar */
+    width: 105%; /* Lebih besar dari 70% */
+    height: auto;
+    
+    top: 60%; /* Menyesuaikan posisi */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1; /* z-index RENDAH (di belakang) */
+}
+
+/* * 5. Gaya untuk Nama, Tanggal, dan Countdown */
+.cover-details-group {
+    width: 100%;
+    margin-top: -80px;
+}
+
+.cover-names {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    /* PERUBAHAN WARNA: Sesuai permintaan Anda */
+    color: #e2835f;
+    margin-bottom: 10px;
+}
+
+.cover-date {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+/* * 6. Gaya untuk Countdown */
+#countdown {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+    letter-spacing: 2px;
+    margin-top: -10px;
+}
+
+.countdown-labels {
+    display: flex;
+    justify-content: space-between;
+    width: 240px;
+    margin: -5px auto 20px auto;
+}
+.countdown-labels span {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: #555;
+}
+
+/* * 7. Gaya untuk Ikon & Tombol */
+.cover-button-group {
+    width: 100%;
+    
+    /* 'margin-top: auto' tidak perlu, 'space-between' akan mengaturnya */
+}
+
+.envelope-icon {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 85px;
+}
+
+#buka-undangan {
+    background-color: #fff;
+    color: #333;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 14px 40px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+#buka-undangan:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* KUNCI: Sembunyikan frame lain */
+.section-full {
+    display: none;
+}
