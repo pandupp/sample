@@ -35,7 +35,7 @@ body {
      */
     display: flex;
     flex-direction: column;
-    justify-content: space-between; 
+    justify-content: flex-start; 
     align-items: center;     
     
     padding: 40px 20px 20px 20px; /* Atas 40, Bawah 20 */
@@ -108,7 +108,7 @@ body {
 /* * 5. Gaya untuk Nama, Tanggal, dan Countdown */
 .cover-details-group {
     width: 100%;
-    margin-top: -80px;
+    margin-top: auto;
 }
 
 .cover-names {
@@ -161,7 +161,7 @@ body {
 .envelope-icon {
     font-size: 1.5rem;
     color: #333;
-    margin-bottom: 85px;
+    margin-bottom: 25px;
 }
 
 #buka-undangan {
