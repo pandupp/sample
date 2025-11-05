@@ -23,25 +23,21 @@ body {
 /* * 2. Gaya untuk FRAME 1 (COVER)
  * ----------------------------- */
 #cover {
-    /* KUNCI 1:
-     * 'height: 100vh' memaksa frame pas 1 layar.
-     * 'overflow: hidden' mencegah 'bounce' scroll.
-     */
-    height: 100dvh; 
+    /* KUNCI 1: Boleh tumbuh jika konten lebih tinggi */
+    min-height: 100dvh; 
+
     width: 100%;
-    overflow: hidden; 
-    box-sizing: border-box;
-    display: flex;
-    /* KUNCI 2:
-     * 'flex-start' akan menata dari atas.
-     */
+    /* KUNCI 2: Hapus 'overflow: hidden;' agar tombol tidak terpotong */
+    /* overflow: hidden; */ 
+    
+    box-sizing: border-box; 
+    
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Tata elemen dari atas ke bawah */
+    justify-content: flex-start; /* Tata dari atas */
     align-items: center;     
     
-    padding: 40px 20px 20px 20px; /* Padding atas 40, bawah 20 */
-    
+    padding: 40px 20px 20px 20px; 
     color: #444; 
     text-align: center;
     position: relative;
@@ -77,11 +73,8 @@ body {
     max-width: 450px; 
     flex-shrink: 0;
 
-    /* KUNCI 3: PERBAIKAN UX
-     * Tinggi container dikurangi dari 400px ke 320px.
-     * Ini memberi ruang lebih untuk tombol di layar pendek.
-     */
-    height: 320px; 
+    /* KUNCI 3: Kecilkan gambar agar scroll lebih sedikit */
+    height: 280px; 
 }
 
 .cover-image-flowers {
