@@ -227,7 +227,7 @@ body.lock {
     align-items: center;
     
     /* 4. TINGGI KARTU: Wajib ada min-height agar tidak memendek */
-    min-height: 750px; /* Saya tambah jadi 620px agar teks panjang muat lega */
+    min-height: 900px; /* Saya tambah jadi 620px agar teks panjang muat lega */
 }
 
 /* Font Judul Card */
