@@ -217,7 +217,7 @@ body.lock {
     background-repeat: no-repeat;
     
     /* 3. PADDING: Atas/Bawah 60px (biar muat teks), Kiri/Kanan 45px (biar tidak mepet) */
-    padding: 80px 85px;
+    padding: 80px 75px;
     
     width: 100%;
     text-align: center;
@@ -227,7 +227,7 @@ body.lock {
     align-items: center;
     
     /* 4. TINGGI KARTU: Wajib ada min-height agar tidak memendek */
-    min-height: 800px; /* Saya tambah jadi 620px agar teks panjang muat lega */
+    min-height: 750px; /* Saya tambah jadi 620px agar teks panjang muat lega */
 }
 
 /* Font Judul Card */
@@ -576,4 +576,15 @@ body.lock {
 .frame-6 .card-title {
     margin-top: 0;
     margin-bottom: 10px;
+}
+
+/* --- TAMBAHAN DI PALING BAWAH STYLE.CSS --- */
+
+/* Jika layar HP LEBAR (lebih dari 400px), pakai ukuran FAVORITMU */
+@media (min-width: 400px) {
+    .card {
+        /* Masukkan angka yang kamu suka tadi di sini */
+        padding: 80px 85px !important; 
+        min-height: 800px !important;
+    }
 }
