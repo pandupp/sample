@@ -1,9 +1,6 @@
-/* =================================
-SKRIP CSS - FOKUS FRAME 1 (REVISI FINAL UX)
-================================= */
-
-/* * 1. CSS Reset & Font Dasar
- * ----------------------------- */
+/* =========================================================
+   GLOBAL STYLES
+   ========================================================= */
 * {
     margin: 0;
     padding: 0;
@@ -12,285 +9,353 @@ SKRIP CSS - FOKUS FRAME 1 (REVISI FINAL UX)
 
 body {
     font-family: 'Poppins', sans-serif;
-    color: #333;
-    
-    background-image: url('../images/background.jpg');
+    /* Pastikan path background benar (naik satu folder dari css) */
+    background: url('../images/background.jpg') no-repeat center center fixed;
     background-size: cover;
-    background-position: center; 
+    color: #333;
     overflow-x: hidden;
 }
 
-/* * 2. Gaya untuk FRAME 1 (COVER)
- * ----------------------------- */
-#cover {
-    /* KUNCI 1: Boleh tumbuh jika konten lebih tinggi */
-    min-height: 100dvh; 
+/* Scroll Lock Class */
+body.lock {
+    overflow: hidden;
+    height: 100dvh;
+}
 
+.wrapper {
+    height: 100dvh;
     width: 100%;
-    /* KUNCI 2: Hapus 'overflow: hidden;' agar tombol tidak terpotong */
-    /* overflow: hidden; */ 
-    
-    box-sizing: border-box; 
-    
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
+.frame {
+    height: 100dvh;
+    width: 100%;
+    scroll-snap-align: start;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Tata dari atas */
-    align-items: center;     
-    
-    padding: 40px 20px 20px 20px; 
-    color: #444; 
-    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
     position: relative;
+    /* Penting agar background body terlihat */
+    background-color: transparent; 
 }
 
-/* * 3. Gaya untuk Teks Awal */
-.cover-text-group {
-    width: 100%;
-    flex-shrink: 0; /* Mencegah teks ini 'gepeng' */
+/* =========================================================
+   FRAME 1 : COVER (HERO BESAR + COUNTDOWN)
+   ========================================================= */
+.frame-1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Header Atas, Hero Tengah, Footer Bawah */
+    padding-top: 3vh;
+    padding-bottom: 30vh;
 }
 
-.cover-welcome-sub {
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: #e2835f; 
-    letter-spacing: 2px;
+.cover-header {
+    text-align: center;
+    z-index: 10;
+}
+
+.cover-header .small {
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #e2835f;
     margin-bottom: 5px;
 }
 
-.cover-welcome-main {
+.cover-header .title {
     font-family: 'Playfair Display', serif;
-    font-size: 2rem;
+    font-size: 32px;
     font-weight: 700;
+    line-height: 1.2;
     color: #e2835f;
-    letter-spacing: 1px;
 }
 
-/* * 4. Gaya untuk Group Gambar (Hanya bungaframe1 & hero) */
-.cover-image-group {
+/* --- HERO SECTION --- */
+.cover-hero {
+    flex-grow: 1; /* Mengisi sisa ruang kosong */
+    width: 100%;
     position: relative;
-    width: 100%;
-    max-width: 450px; 
-    flex-shrink: 0;
-
-    /* KUNCI 3: Kecilkan gambar agar scroll lebih sedikit */
-    height: 280px; 
-}
-
-.cover-image-flowers {
-    /* (Bunga di DEPAN) */
-    position: absolute;
-    width: 100%;
-    height: auto;
-    top: 80%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
-}
-
-.cover-image-hero {
-    /* (Pasangan di BELAKANG) */
-    position: absolute;
-    width: 100%;
-    height: auto;
-    top: 80%; 
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-}
-
-/* * 5. Gaya untuk Nama, Tanggal, dan Countdown */
-.cover-details-group {
-    width: 100%;
-    flex-shrink: 0;
-
-    /* KUNCI 4: PERBAIKAN UX
-     * 'margin-top: auto' akan mendorong blok ini
-     * (dan tombol di bawahnya) ke bagian bawah layar,
-     * mengisi semua ruang kosong yang tersisa.
-     */
-    margin-top: auto;
-    
-    /* Kita tambahkan sedikit padding di atasnya agar tidak terlalu 'kosong' */
-    padding-top: 20px;
-}
-
-.cover-names {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: #e2835f;
-    margin-bottom: 10px;
-}
-
-.cover-date {
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 400;
-    color: #444;
-    margin-bottom: 20px;
-}
-
-/* * 6. Gaya untuk Countdown */
-#countdown {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #333;
-    letter-spacing: 2px;
-}
-
-.countdown-labels {
     display: flex;
-    justify-content: space-between;
-    width: 240px;
-    margin: -5px auto 20px auto;
-}
-.countdown-labels span {
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.7rem;
-    font-weight: 500;
-    color: #555;
+    justify-content: center;
+    align-items: center; /* Center Vertikal */
 }
 
-/* * 7. Gaya untuk Ikon & Tombol */
-.cover-button-group {
+.hero-img {
+    width: auto;
+    height: auto;
+    max-height: 65vh; /* Batasi tinggi agar muat di layar HP */
+    max-width: 95%; 
+    object-fit: contain;
+    z-index: 1;
+    filter: drop-shadow(0 8px 15px rgba(0,0,0,0.15)); /* Efek Timbul */
+}
+
+.hero-flower {
+    position: absolute;
+    bottom: 0%; /* Naikkan sedikit agar menutupi kaki */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%; 
+    max-width: 380px;
+    z-index: 2; /* Di depan hero */
+}
+
+/* --- FOOTER SECTION --- */
+.cover-footer {
+    text-align: center;
+    position: relative;
+    z-index: 10;
     width: 100%;
-    flex-shrink: 0;
 }
 
-.envelope-icon {
-    font-size: 1.5rem;
-    color: #333;
-    margin-bottom: 25px; /* Jarak ikon ke tombol */
+/* Countdown Styles */
+.countdown-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
 }
 
-#buka-undangan {
-    background-color: #fff;
+.time-box {
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(5px);
+    padding: 5px 10px;
+    border-radius: 8px;
+    min-width: 55px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.time-box span {
+    display: block;
+    font-weight: 700;
+    font-size: 18px;
+    color: #e2835f; /* Warna Emas */
+    line-height: 1;
+}
+
+.time-box small {
+    font-size: 9px;
+    text-transform: uppercase;
     color: #333;
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.9rem;
+}
+
+/* Nama Mempelai (Font Baru) */
+.names {
+    font-family: 'Great Vibes', cursive;
+    font-size: 42px;
+    font-weight: 400;
+    color: #e2835f;
+    margin-bottom: 15px;
+    line-height: 1.2;   
+    text-shadow:
+    1px 1px 2px rgba(255, 255, 255, 0.9),
+    -1px -1px 2px rgba(255, 255, 255, 0.9),
+    4px 4px 8px rgba(0, 0, 0, 0.25);
+}
+
+.date {
+    font-size: 13px;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
     font-weight: 500;
-    padding: 14px 40px;
+    color: #e2835f
+}
+
+.open-btn {
+    padding: 12px 35px;
     border: none;
     border-radius: 50px;
+    background: linear-gradient(to right, #d4a373, #a97142);
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    box-shadow: 0 4px 12px rgba(169, 113, 66, 0.4);
     cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-    transition: all 0.3s ease;
+    transition: transform 0.2s;
 }
 
-#buka-undangan:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+.open-btn:active {
+    transform: scale(0.95);
 }
 
-/* =================================
- SKRIP CSS - FRAME 2 (AYAT)
-================================= */
+/* =========================================================
+   CARD SYSTEM (FRAME 2, 3, 4) - VERSI FINAL & FIXED
+   ========================================================= */
 
-/* * 1. Aturan Dasar untuk SEMUA Section
- * Ini adalah pengganti '.section-full { display: none; }'
- */
-.section-full {
-    /* * 'min-height: 100dvh' memastikan tiap frame 
-     * setidaknya setinggi layar.
-     */
-    min-height: 100dvh;
+.card-wrapper {
     width: 100%;
-    
-    /* Pusatkan 'card' di tengah section */
+    /* 1. LEBAR KARTU: Pastikan angka ini 380px agar lebar */
+    max-width: 500px; 
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    
-    /* Beri padding agar card tidak mepet di layar kecil */
-    padding: 60px 20px;
-    
-    box-sizing: border-box; 
 }
 
-/* * 2. Styling Card Ayat (FRAME 2)
- */
-.card-ayat {
-    /* KUNCI: Gunakan 'ornamen-frame-orange.png' sebagai background */
-    background-image: url('../images/ornamen-frame-orange.png');
-    background-size: 100% 100%; /* Paksa gambar frame pas dengan container */
+.card-deco {
+    position: absolute;
+    width: 280px;
+    z-index: 3;
+}
+
+/* Mengatur posisi bunga menempel di frame */
+.card-deco.top { top: 50px; }
+.card-deco.bottom { bottom: 70px; }
+
+.card {
+    /* 2. BACKGROUND: Wajib 100% 100% agar gambar frame tertarik penuh */
+    background-size: 100% 100% !important;
     background-repeat: no-repeat;
     
-    width: 100%;
-    max-width: 450px; /* Lebar maksimum card, sesuaikan jika perlu */
-
-    /* * Padding ini SANGAT PENTING.
-     * Ini memberi "ruang nafas" di DALAM gambar frame, 
-     * sehingga teks tidak menabrak pinggiran.
-     */
-    padding: 60px 40px; 
+    /* 3. PADDING: Atas/Bawah 60px (biar muat teks), Kiri/Kanan 45px (biar tidak mepet) */
+    padding: 80px 85px;
     
+    width: 100%;
     text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Tata konten dari atas ke bawah */
+    justify-content: center;
+    align-items: center;
     
-    color: #444; /* Warna teks dasar di dalam card */
-    box-sizing: border-box;
-    
-    /* Bayangan halus agar card 'terangkat' */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    /* 4. TINGGI KARTU: Wajib ada min-height agar tidak memendek */
+    min-height: 800px; /* Saya tambah jadi 620px agar teks panjang muat lega */
 }
 
-/* * 3. Styling Elemen di Dalam Card
- */
-.card-flower-top {
-    width: 60%; /* Ukuran bunga atas */
-    max-width: 200px;
-    height: auto;
-    margin: 0 auto; /* Pusatkan di atas */
+/* Font Judul Card */
+.card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: #e2835f; /* Warna Terracotta */
+    margin-bottom: 10px;
+    font-weight: 700;
 }
 
-.card-flower-bottom {
-    width: 60%; /* Ukuran bunga bawah */
-    max-width: 200px;
-    height: auto;
-    margin: 0 auto; /* Pusatkan di bawah */
-}
-
-.card-text-content {
-    /* Jarak antara bunga dan teks */
-    padding: 20px 0; 
-}
-
-.ayat-arabic {
-    /* * Ganti 'NamaFontArab' dengan font khusus jika Anda punya,
-     * jika tidak, browser akan gunakan font Arab default.
-     */
-    font-family: 'NamaFontArab', 'Times New Roman', Times, serif; 
-    font-size: 1.5rem; /* Ukuran teks Arab */
-    line-height: 2.5rem; /* Jarak antar baris */
+/* Font Arab (Dikecilkan agar muat) */
+.arabic {
+    font-size: 12px; 
+    line-height: 1.6;
+    margin-bottom: 15px;
+    font-family: serif;
     color: #333;
-    margin-bottom: 25px;
 }
 
-.ayat-translation-group {
-    border: none; /* Hapus style default blockquote */
-    margin: 0;
-    padding: 0;
-}
-
-.ayat-translation {
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.9rem;
-    font-style: italic; /* Teks miring */
-    line-height: 1.6rem;
+/* Font Terjemahan (Dikecilkan agar muat) */
+.translation {
+    font-size: 12px;
+    line-height: 1.5;
+    font-style: italic;
     color: #555;
     margin-bottom: 10px;
 }
+/* Frame 3 Specific */
 
-.ayat-reference {
+.mini-hero {
+    /* 1. MEMPERBESAR UKURAN */
+    width: auto;      /* Biarkan lebar menyesuaikan proporsi gambar */
+    height: 350px;    /* Ubah tinggi drastis (sebelumnya 100px). Coba 200px - 250px */
+    
+    /* 2. MENGHILANGKAN FRAME LINGKARAN */
+    border: none;        /* Menghapus garis pinggir warna emas/coklat */
+    border-radius: 0;    /* Menghapus efek pemotongan lingkaran (crop circle) */
+    background: transparent; /* Pastikan background transparan */
+    box-shadow: none;    /* Menghapus bayangan kotak jika ada */
+    
+    /* 3. PENYESUAIAN GAMBAR */
+    object-fit: contain; /* Agar gambar tampil utuh dan tidak gepeng */
+    
+    /* 4. POSISI */
+    margin-bottom: -10px; /* Mengurangi jarak ke judul "Acara Pernikahan" agar lebih dekat */
+    margin-top: -30px;    /* Opsional: Menarik gambar ke atas sedikit supaya tidak memakan tempat teks bawah */
+}
+
+.event-item h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #222;
+}
+
+.event-item p {
+    font-size: 14px;
+    margin-bottom: 2px;
+}
+
+.divider {
+    height: 1px;
+    width: 50%;
+    background: #ccc;
+    margin: 15px 0;
+}
+
+/* =========================================================
+   FRAME 5
+   ========================================================= */
+.gallery-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    text-align: center;
+    color: #8B5A2B;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (min-width: 480px) {
+    /* Pastikan max-width di sini LEBIH BESAR dari 380px */
+    .card-wrapper { max-width: 420px; } 
+    .cover-hero .hero-img { max-height: 50vh; }
+}
+
+@media (min-width: 768px) {
+    /* Tablet/Laptop */
+    .card-wrapper { max-width: 500px; } 
+    .names { font-size: 56px; }
+}
+
+.cover-footer {
+    text-align: center;
+    position: relative;
+    /* Z-index tinggi agar footer berada DI ATAS bunga/gambar jika bertumpuk */
+    z-index: 20; 
+    width: 100%;
+    
+    /* UBAH DARI -20px MENJADI -80px (Tarik paksa ke atas) */
+    margin-top: -80px; 
+}
+
+/* =========================================================
+   KHUSUS FRAME 4 (CERITA KITA)
+   ========================================================= */
+
+/* Memberi jarak antar blok cerita */
+.story-block {
+    margin-bottom: 25px; /* Jarak antara cerita 1 dan 2 */
+    width: 100%;
+}
+
+/* Styling Judul Kecil (Awal Pertemuan & Harapan) */
+.story-subtitle {
+    font-family: 'Playfair Display', serif; /* Pakai font elegan */
+    font-size: 18px;
+    font-weight: 700;
+    color: #e2835f; /* Warna Terracotta (Sesuai Tema) */
+    margin-bottom: 8px; /* Jarak ke teks isi */
+}
+
+/* Styling Isi Cerita */
+.story-text {
     font-family: 'Poppins', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: #444;
-    font-style: normal;
+    font-size: 13px; /* Ukuran pas, tidak terlalu besar */
+    line-height: 1.6; /* Spasi antar baris lega */
+    color: #555; /* Abu tua (bukan hitam pekat) agar lembut */
+    font-weight: 400;
 }

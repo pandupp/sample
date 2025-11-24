@@ -1,101 +1,57 @@
-/* =================================
-SKRIP JS LENGKAP - UNDANGAN DIGITAL
-=================================
-*/
-
-// 'DOMContentLoaded' memastikan semua elemen HTML
-// sudah dimuat sebelum JavaScript ini berjalan.
-document.addEventListener("DOMContentLoaded", function() {
-
-    // --- BAGIAN 1: FUNGSI TOMBOL "BUKA UNDANGAN" ---
+document.addEventListener("DOMContentLoaded", () => {
     
-    // 1. Ambil elemen-elemen yang kita butuhkan dari HTML
-    const bukaUndanganButton = document.getElementById("buka-undangan");
-    const coverSection = document.getElementById("cover");
-    const mainContent = document.getElementById("main-content");
-    
-    // Kita cari <audio> di HTML. Pastikan Anda sudah menambahkannya!
-    const audio = document.getElementById("background-music");
+    // --- 1. SETUP AUDIO & SCROLL LOCK ---
+    const openBtn = document.getElementById("openBtn");
+    const audio = new Audio("images/music.mp3"); // Pastikan file ada
+    audio.loop = true;
+    let musicPlayed = false;
 
-    // 2. Tambahkan "pendengar" ke tombol. 
-    //    Fungsi ini akan berjalan SAAT tombol di-klik.
-    bukaUndanganButton.addEventListener("click", function() {
-        
-        // 3. Mainkan musik (jika ada elemen audio)
-        if (audio) {
-            audio.play().catch(error => {
-                console.log("Autoplay musik dicegah oleh browser.");
+    // Pastikan scroll terkunci di awal (fallback jika CSS gagal)
+    document.body.classList.add("lock");
+
+    openBtn.addEventListener("click", () => {
+        // A. Buka Kunci Scroll
+        document.body.classList.remove("lock");
+
+        // B. Scroll Halus ke Frame 2
+        document.querySelector(".frame-2").scrollIntoView({ behavior: "smooth" });
+
+        // C. Play Music
+        if (!musicPlayed) {
+            audio.play().then(() => {
+                console.log("Audio playing");
+            }).catch(error => {
+                console.log("Audio play failed (browser policy):", error);
             });
-        } else {
-            console.log("Elemen audio tidak ditemukan. Lupa menambahkannya di HTML?");
+            musicPlayed = true;
         }
-
-        // 4. Beri 'cover' efek transisi fade-out yang halus
-        coverSection.style.transition = "opacity 1s ease-out, transform 1s ease-out";
-        coverSection.style.opacity = 0;
-        coverSection.style.transform = "translateY(-100%)"; // Bergeser ke atas
-        
-        // 5. Tampilkan konten utama (Frame 2, 3, 4)
-        mainContent.style.display = "block";
-
-        // 6. Setelah animasi selesai (1 detik), sembunyikan 'cover' total
-        setTimeout(() => {
-            coverSection.style.display = "none";
-        }, 1000); // 1000 milidetik = 1 detik
     });
 
+    // --- 2. COUNTDOWN TIMER LOGIC ---
+    // Set Tanggal Acara: Bulan (Inggris), Tanggal, Tahun, Jam:Menit:Detik
+    const targetDate = new Date("December 12, 2025 08:00:00").getTime();
 
-    // --- BAGIAN 2: FUNGSI COUNTDOWN TIMER ---
-
-    // ==========================================================
-    // !!! PENTING: Ganti tanggal ini dengan tanggal pernikahan Anda !!!
-    // Format: "Bulan Hari, Tahun Jam:Menit:Detik"
-    // Contoh: "August 18, 2026 09:00:00"
-    // ==========================================================
-    const tanggalPernikahan = "December 31, 2025 09:00:00";
-
-
-    // Ambil elemen-elemen span untuk angka
-    const daysSpan = document.getElementById("days");
-    const hoursSpan = document.getElementById("hours");
-    const minutesSpan = document.getElementById("minutes");
-    const secondsSpan = document.getElementById("seconds");
-
-    // Buat fungsi untuk memformat angka (misal: 7 -> "07")
-    function formatAngka(angka) {
-        return angka < 10 ? "0" + angka : angka;
-    }
-
-    // Fungsi 'updateCountdown' akan kita jalankan setiap detik
-    function updateCountdown() {
-        const targetTime = new Date(tanggalPernikahan).getTime();
+    const countdownInterval = setInterval(() => {
         const now = new Date().getTime();
-        const selisih = targetTime - now;
+        const distance = targetDate - now;
 
-        if (selisih < 0) {
-            clearInterval(timerInterval); // Hentikan hitung mundur
-            daysSpan.innerText = "00";
-            hoursSpan.innerText = "00";
-            minutesSpan.innerText = "00";
-            secondsSpan.innerText = "00";
-            return;
+        // Rumus Waktu
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Update HTML (tambah angka 0 di depan jika satuan)
+        document.getElementById("days").innerText = days < 10 ? "0" + days : days;
+        document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+        document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+        document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+
+        // Jika waktu habis
+        if (distance < 0) {
+            clearInterval(countdownInterval);
+            document.getElementById("countdown").innerHTML = "<p style='font-weight:bold; color:#8B5A2B;'>Acara Telah Dimulai!</p>";
         }
-
-        const hari = Math.floor(selisih / (1000 * 60 * 60 * 24));
-        const jam = Math.floor((selisih % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const menit = Math.floor((selisih % (1000 * 60 * 60)) / (1000 * 60));
-        const detik = Math.floor((selisih % (1000 * 60)) / 1000);
-
-        daysSpan.innerText = formatAngka(hari);
-        hoursSpan.innerText = formatAngka(jam);
-        minutesSpan.innerText = formatAngka(menit);
-        secondsSpan.innerText = formatAngka(detik);
-    }
-    
-    // Hanya jalankan countdown jika elemennya ada di halaman
-    if (daysSpan && hoursSpan && minutesSpan && secondsSpan) {
-        updateCountdown(); // Jalankan sekali saat memuat
-        var timerInterval = setInterval(updateCountdown, 1000); // Ulangi setiap detik
-    }
+    }, 1000);
 
 });

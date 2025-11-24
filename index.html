@@ -1,100 +1,133 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Undangan Adam & Hawa</title>
-    
-    <link rel="stylesheet" href="css/style.css">
-    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Wedding of Adam & Hawa</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <script src="js/script.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css" />
 </head>
-<body>
+<body class="lock"> <div class="wrapper">
 
-    <audio id="background-music" loop>
-        <source src="audio/music.mp3" type="audio/mpeg">
-    </audio>
-
-    <header id="cover">
-        
-        <div class="cover-text-group">
-            <p class="cover-welcome-sub">WELCOME TO</p>
-            <h2 class="cover-welcome-main">OUR WEDDING</h2>
-        </div>
-        
-        <div class="cover-image-group">
-            <img src="images/bungaframe1.png" alt="Rangkaian Bunga" class="cover-image-flowers">
-            <img src="images/hero.png" alt="Ilustrasi Adam & Hawa" class="cover-image-hero">
-        </div>
-
-        <div class="cover-details-group">
-            <h1 class="cover-names">Adam & Hawa</h1>
-            <p class="cover-date">MINGGU, 28 AGUSTUS 2025</p>
-
-            <div id="countdown">
-                <span id="days">00</span>:<span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
+        <section class="frame frame-1" id="cover">
+            <div class="cover-header">
+                <p class="small">THE WEDDING OF</p>
+                <h1 class="title">OUR WEDDING</h1>
             </div>
-            <div class="countdown-labels">
-                <span>DAYS</span>
-                <span>HOURS</span>
-                <span>MINS</span>
-                <span>SECS</span>
+
+            <div class="cover-hero">
+                <img src="images/hero.png" class="hero-img" alt="Couple" />
+                <img src="images/bungaframe1.png" class="hero-flower" alt="Flower" />
             </div>
-        </div>
 
-        <div class="cover-button-group">
-            <div class="envelope-icon">
-                <i class="fa-regular fa-envelope"></i>
-            </div>
-            <button id="buka-undangan">Buka Undangan</button>
-        </div>
+            <div class="cover-footer">
+    <h2 class="names">Adam & Hawa</h2>
 
-    </header>
-
-    <main id="main-content" style="display: none;">
-        <section id="ayat" class="section-full">
-            <h2>F<section id="ayat" class="section-full">
-    
-    <div class="card-ayat">
-        
-        <img src="images/Bungaatas.png" alt="Bunga Atas" class="card-flower-top">
-        
-        <div class="card-text-content">
-            
-            <p class="ayat-arabic" dir="rtl">
-                وَمِنْ آيَاتِهِۦٓ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَٰجًۭا لِّتَسْكُنُوٓا۟ إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةًۭ وَرَحْمَةً ۚ إِنَّ فِى ذَٰلِكَ لَءَايَـٰتٍۢ لِّقَوْمٍۢ يَتَفَكَّرُونَ
-            </p>
-            
-            <blockquote class="ayat-translation-group">
-                <p class="ayat-translation">
-                    "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda bagi kaum yang berpikir."
-                </p>
-                <footer class="ayat-reference">
-                    — QS. Ar-Rum (30): 21
-                </footer>
-            </blockquote>
+    <div class="countdown-wrapper" id="countdown">
+        <div class="time-box">
+            <span id="days">00</span> <small>Hari</small>
         </div>
-        
-        <img src="images/bungabawah.png" alt="Bunga Bawah" class="card-flower-bottom">
-        
+        <div class="time-box">
+            <span id="hours">00</span> <small>Jam</small>
+        </div>
+        <div class="time-box">
+            <span id="minutes">00</span> <small>Menit</small>
+        </div>
+        <div class="time-box">
+            <span id="seconds">00</span> <small>Detik</small>
+        </div>
     </div>
-</section>
+    
+    <p class="date">Minggu, 12 Desember 2025</p>
+    
+    <button id="openBtn" class="open-btn">
+        💌 Buka Undangan
+    </button>
+</div>
+        </section>
 
-<section id="detail" class="section-full"></h2>
-        </section>
-        <section id="detail" class="section-full">
-            <h2>Frame 3 (Detail)</h2>
-        </section>
-        <section id="cerita" class="section-full">
-            <h2>Frame 4 (Cerita)</h2>
-        </section>
-    </main>
 
+        <section class="frame frame-2">
+            <div class="card-wrapper">
+                <img src="images/Bungaatas.png" class="card-deco top" alt="deco" />
+                <div class="card" style="background-image: url('images/ornamen-frame-orange.png');">
+                    <h2 class="card-title" style="margin-top": 20px;>بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِي</h2>  
+                    <p class="arabic">
+                        وَمِنْ آيَاتِهِۦٓ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَٰجًۭا لِّتَسْكُنُوٓا۟ إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةًۭ وَرَحْمَةً ۚ إِنَّ فِى ذَٰلِكَ لَءَايَـٰتٍۢ لِّقَوْمٍۢ يَتَفَكَّرُونَ
+                    </p>
+                    <p class="translation">
+                        "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda bagi kaum yang berpikir."
+                        <br> — QS. Ar-Rum (30): 21
+                    </p>
+                </div>
+                <img src="images/bungabawah.png" class="card-deco bottom" alt="deco" />
+            </div>
+        </section>
+
+
+        <section class="frame frame-3">
+            <div class="card-wrapper">
+                <img src="images/bungaatasf3.png" class="card-deco top" alt="deco" />
+                <div class="card" style="background-image: url('images/ornamen-frame-biru.png');">
+                    <img src="images/Hero2.png" class="mini-hero" alt="Mini Couple" />
+                    
+                    <h2 class="card-title">Acara Pernikahan</h2>
+                    
+                    <div class="event-item">
+                        <h3>Akad Nikah</h3>
+                        <p>08.00 WIB - Selesai</p>
+                        <p>Masjid Agung Al-Hikmah</p>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <div class="event-item">
+                        <h3>Resepsi</h3>
+                        <p>11.00 WIB - Selesai</p>
+                        <p>Grand Ballroom Hotel</p>
+                    </div>
+                </div>
+                <img src="images/bungabawahf3.png" class="card-deco bottom" alt="deco" />
+            </div>
+        </section>
+
+
+        <section class="frame frame-4">
+            <div class="card-wrapper">
+                <img src="images/Bungaatas.png" class="card-deco top" alt="deco" />
+                <div class="card" style="background-image: url('images/ornamen-frame-orange.png');">
+    <h2 class="card-title">Cerita Kita</h2>
+    
+    <div class="story-block">
+        <h3 class="story-subtitle">Awal Pertemuan</h3>
+        <p class="story-text">
+            Semua berawal dari sebuah pertemuan sederhana di kedai kopi, lalu perlahan berubah menjadi cerita panjang yang tak pernah kami duga.
+        </p>
+    </div>
+
+    <div class="story-block">
+        <h3 class="story-subtitle">Harapan</h3>
+        <p class="story-text">
+            Semoga kisah ini menjadi awal dari perjalanan yang diberkahi Allah SWT.
+        </p>
+    </div>
+</div>
+                <img src="images/bungabawah.png" class="card-deco bottom" alt="deco" />
+            </div>
+        </section>
+
+
+        <section class="frame frame-5">
+            <h2 class="gallery-title">Galeri Foto</h2>
+            <p style="text-align: center; font-size: 12px; margin-top: 10px;">Terima kasih atas doa restu Bapak/Ibu/Saudara/i.</p>
+        </section>
+
+    </div>
+
+    <script src="js/script.js"></script>
 </body>
 </html>
