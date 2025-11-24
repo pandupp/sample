@@ -121,12 +121,84 @@
         </section>
 
 
-        <section class="frame frame-5">
-            <h2 class="gallery-title">Galeri Foto</h2>
-            <p style="text-align: center; font-size: 12px; margin-top: 10px;">Terima kasih atas doa restu Bapak/Ibu/Saudara/i.</p>
-        </section>
+<section class="frame frame-5">
+    <div class="card-wrapper">
+        <img src="images/Bungaatas.png" class="card-deco top" alt="deco" />
+        
+        <div class="card" style="background-image: url('images/ornamen-frame-orange.png');">
+            
+            <h2 class="card-title">Wedding Gift</h2>  
 
+            <div class="bank-card">
+                <h3 class="bank-name">BANK BCA</h3>
+                <p class="rek-number" id="rek1">1234567890</p>
+                <p class="rek-owner">a.n Adam</p>
+                <button class="btn-copy" onclick="copyText('rek1')">
+                    📋 Salin Rekening
+                </button>
+            </div>
+
+            <br>
+
+            <div class="bank-card">
+                <h3 class="bank-name">DANA / E-WALLET</h3>
+                <p class="rek-number" id="rek2">08123456789</p>
+                <p class="rek-owner">a.n Hawa</p>
+                <button class="btn-copy" onclick="copyText('rek2')">
+                    📋 Salin Nomor
+                </button>
+            </div>
+
+            <div class="divider"></div>
+
+        </div>
+        
+        <img src="images/bungabawah.png" class="card-deco bottom" alt="deco" />
     </div>
+</section>
+<section class="frame frame-6">
+    <div class="card-wrapper">
+        
+        <div class="card clean-card">
+            
+            <h2 class="card-title">Kirim Ucapan</h2>
+            <p class="gift-text" style="margin-bottom: 20px;">
+                Tuliskan doa restu Anda untuk kami berdua.
+            </p>
+
+            <div class="form-box">
+                <input type="text" id="guestName" placeholder="Nama Anda" class="form-input">
+                <textarea id="guestMessage" placeholder="Tulis ucapan & doa..." class="form-input" rows="3"></textarea>
+                
+                <select id="attendance" class="form-input">
+                    <option value="Hadir">Hadir</option>
+                    <option value="Tidak Hadir">Tidak Hadir</option>
+                </select>
+
+                <button class="open-btn" onclick="addComment()" style="width: 100%; margin-top: 10px;">
+                    Kirim Ucapan
+                </button>
+            </div>
+
+            <div class="comment-scroll-area">
+                <div class="comment-item">
+                    <div class="comment-header">
+                        <span class="c-name">Admin</span>
+                        <span class="c-badge present">Hadir</span>
+                    </div>
+                    <p class="c-message">Silakan tinggalkan pesan untuk mempelai di sini.</p>
+                    <small class="c-time">Pinned</small>
+                </div>
+                
+                <div id="newComments"></div>
+            </div>
+
+        </div>
+        
+    </div>
+</section>
+    </div>
+    
 
     <script src="js/script.js"></script>
 </body>

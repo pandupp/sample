@@ -55,3 +55,52 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 1000);
 
 });
+
+// --- FUNGSI COPY REKENING ---
+function copyText(elementId) {
+    // 1. Ambil teks dari elemen ID
+    var textToCopy = document.getElementById(elementId).innerText;
+
+    // 2. Gunakan API Clipboard modern
+    navigator.clipboard.writeText(textToCopy).then(function() {
+        alert("Nomor berhasil disalin!");
+    }, function(err) {
+        console.error('Gagal menyalin: ', err);
+    });
+}
+
+// --- FUNGSI TAMBAH KOMENTAR (SIMULASI) ---
+function addComment() {
+    // 1. Ambil nilai dari input
+    const name = document.getElementById("guestName").value;
+    const msg = document.getElementById("guestMessage").value;
+    const status = document.getElementById("attendance").value;
+
+    // 2. Validasi (Cek apakah kosong)
+    if (name === "" || msg === "") {
+        alert("Mohon isi nama dan ucapan Anda.");
+        return;
+    }
+
+    // 3. Buat elemen HTML baru untuk komentar
+    const newCommentHTML = `
+        <div class="comment-item">
+            <div class="comment-header">
+                <span class="c-name">${name}</span>
+                <span class="c-badge ${status === 'Hadir' ? 'present' : 'absent'}">${status}</span>
+            </div>
+            <p class="c-message">${msg}</p>
+            <small class="c-time">Baru saja</small>
+        </div>
+    `;
+
+    // 4. Masukkan ke dalam list (di paling atas container baru)
+    const container = document.getElementById("newComments");
+    container.insertAdjacentHTML('afterbegin', newCommentHTML);
+
+    // 5. Reset input form
+    document.getElementById("guestName").value = "";
+    document.getElementById("guestMessage").value = "";
+    
+    alert("Terima kasih atas ucapan Anda!");
+}

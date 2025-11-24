@@ -258,23 +258,27 @@ body.lock {
 }
 /* Frame 3 Specific */
 
+/* File: css/style.css */
+
 .mini-hero {
-    /* 1. MEMPERBESAR UKURAN */
-    width: auto;      /* Biarkan lebar menyesuaikan proporsi gambar */
-    height: 350px;    /* Ubah tinggi drastis (sebelumnya 100px). Coba 200px - 250px */
+    /* 1. KEMBALIKAN KE POSISI NORMAL (Relatif) */
+    position: relative; 
     
-    /* 2. MENGHILANGKAN FRAME LINGKARAN */
-    border: none;        /* Menghapus garis pinggir warna emas/coklat */
-    border-radius: 0;    /* Menghapus efek pemotongan lingkaran (crop circle) */
-    background: transparent; /* Pastikan background transparan */
-    box-shadow: none;    /* Menghapus bayangan kotak jika ada */
+    /* 2. UKURAN TETAP BESAR */
+    height: 400px; /* Sesuaikan angka ini (200px - 250px) agar pas di lengkungan */
+    width: auto;
     
-    /* 3. PENYESUAIAN GAMBAR */
-    object-fit: contain; /* Agar gambar tampil utuh dan tidak gepeng */
+    /* 3. ATUR POSISI NAIK/TURUN */
+    /* Gunakan margin negatif agar gambar naik ke area padding atas (lengkungan frame) */
+    margin-top: -110px;  
+    margin-bottom: -180px; /* Jarak antara kaki hero dan judul Acara */
     
-    /* 4. POSISI */
-    margin-bottom: -10px; /* Mengurangi jarak ke judul "Acara Pernikahan" agar lebih dekat */
-    margin-top: -30px;    /* Opsional: Menarik gambar ke atas sedikit supaya tidak memakan tempat teks bawah */
+    /* Reset style bawaan */
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    object-fit: contain;
+    z-index: 5;
 }
 
 .event-item h3 {
@@ -297,13 +301,73 @@ body.lock {
 }
 
 /* =========================================================
-   FRAME 5
+   STYLE KHUSUS FRAME 5 (WEDDING GIFT)
    ========================================================= */
-.gallery-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 28px;
-    text-align: center;
-    color: #8B5A2B;
+
+.gift-text {
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-style: italic;
+    color: #555;
+}
+
+/* Kotak Informasi Bank */
+.bank-card {
+    background: rgba(255, 255, 255, 0.6); /* Putih transparan */
+    border: 1px solid #d4a373; /* Garis emas */
+    border-radius: 12px;
+    padding: 15px;
+    width: 100%;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.bank-name {
+    font-weight: 700;
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.rek-number {
+    font-family: 'Poppins', sans-serif; /* Font tegas untuk angka */
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #333;
+    margin-bottom: 2px;
+}
+
+.rek-owner {
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+/* Tombol Salin */
+.btn-copy {
+    background: #e2835f; /* Warna Terracotta */
+    color: white;
+    border: none;
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-size: 11px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-copy:active {
+    transform: scale(0.95);
+    background: #333;
+}
+
+.closing-text {
+    font-weight: 600;
+    font-size: 12px;
+    color: #e2835f;
+    margin-top: 10px;
 }
 
 /* =========================================================
@@ -358,4 +422,158 @@ body.lock {
     line-height: 1.6; /* Spasi antar baris lega */
     color: #555; /* Abu tua (bukan hitam pekat) agar lembut */
     font-weight: 400;
+}
+
+/* =========================================================
+   OVERRIDES KHUSUS FRAME 5 (Trik CSS Tanpa Ubah HTML)
+   ========================================================= */
+
+/* 1. Menarik Judul "Wedding Gift" ke ATAS (Keluar Card) */
+.frame-5 .card-title {
+    /* Angka minus menarik elemen ke atas melawan arus */
+    margin-top: -30px; 
+    
+    /* Memberi jarak agar teks di bawahnya tidak ikut naik nempel */
+    margin-bottom: 30px; 
+    
+    position: relative;
+    z-index: 5; /* Agar tetap di atas layer bunga */
+}
+
+/* 2. Mendorong Ucapan Terima Kasih ke BAWAH (Keluar Card) */
+.frame-5 .closing-text, 
+.frame-5 p:last-child { /* Jaga-jaga jika kamu belum kasih class closing-text */
+    
+    /* Mendorong jauh dari kotak bank */
+    margin-top: 50px; 
+    
+    /* Menarik paksa agar posisi makin turun */
+    margin-bottom: -60px; 
+    
+    font-weight: 600;
+    font-size: 12px;
+    color: #e2835f;
+    position: relative;
+    z-index: 5;
+}
+
+/* 3. Penyesuaian Bunga di Frame 5 agar tidak tertutup teks */
+.frame-5 .card-deco.top {
+    top: 35px; /* Menurunkan bunga atas sedikit */
+}
+
+.frame-5 .card-deco.bottom {
+    bottom: 65px; /* Menaikkan bunga bawah sedikit */
+}
+
+/* =========================================================
+   FRAME 6 (GUESTBOOK / UCAPAN)
+   ========================================================= */
+
+/* Area Form */
+.form-box {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid #d4a373;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.8);
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    outline: none;
+}
+
+.form-input:focus {
+    border-color: #e2835f; /* Warna saat diklik */
+    background: #fff;
+}
+
+/* Area Scroll Komentar */
+.comment-scroll-area {
+    width: 100%;
+    height: 250px; /* Tinggi maksimal area scroll */
+    overflow-y: auto; /* Agar bisa discroll */
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid rgba(212, 163, 115, 0.3);
+    text-align: left; /* Teks rata kiri */
+}
+
+/* Item Komentar */
+.comment-item {
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    border-left: 3px solid #e2835f; /* Aksen warna di kiri */
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.c-name {
+    font-weight: 700;
+    font-size: 13px;
+    color: #333;
+}
+
+.c-badge {
+    font-size: 9px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: white;
+}
+
+.c-badge.present { background: #4CAF50; } /* Hijau untuk Hadir */
+.c-badge.absent { background: #F44336; }  /* Merah untuk Tidak Hadir */
+
+.c-message {
+    font-size: 12px;
+    color: #555;
+    line-height: 1.4;
+    margin-bottom: 3px;
+}
+
+.c-time {
+    font-size: 9px;
+    color: #999;
+}
+/* =========================================================
+   STYLE KHUSUS FRAME 6 (CLEAN / GLASS)
+   ========================================================= */
+
+.clean-card {
+    /* 1. HAPUS BACKGROUND GAMBAR LAMA */
+    background-image: none !important;
+    
+    /* 2. GANTI DENGAN EFEK KACA (GLASSMORPHISM) */
+    background-color: rgba(255, 255, 255, 0.2); /* Putih transparan */
+    backdrop-filter: blur(10px); /* Efek blur di belakangnya */
+    
+    /* 3. BORDER & RADIUS BARU */
+    border-radius: 20px;
+    border: 2px solid #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    
+    /* 4. UKURAN */
+    padding: 40px 25px;
+    min-height: auto; /* Tinggi menyesuaikan isi, tidak dipaksa panjang */
+    width: 100%;
+}
+
+/* Penyesuaian Judul di Frame 6 agar tidak terlalu jauh */
+.frame-6 .card-title {
+    margin-top: 0;
+    margin-bottom: 10px;
 }
