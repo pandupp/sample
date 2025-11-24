@@ -459,11 +459,11 @@ body.lock {
 
 /* 3. Penyesuaian Bunga di Frame 5 agar tidak tertutup teks */
 .frame-5 .card-deco.top {
-    top: 35px; /* Menurunkan bunga atas sedikit */
+    top: 55px; /* Menurunkan bunga atas sedikit */
 }
 
 .frame-5 .card-deco.bottom {
-    bottom: 65px; /* Menaikkan bunga bawah sedikit */
+    bottom: 88px; /* Menaikkan bunga bawah sedikit */
 }
 
 /* =========================================================
